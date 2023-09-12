@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Button from './Button';
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import logoHorizontal from '../assets/logo-horizontal.svg';
 
 const NavbarStyle = styled.header`
   display: flex;
@@ -10,38 +11,65 @@ const NavbarStyle = styled.header`
 `;
 
 const Logo = styled.div`
-  /* Estilos para a logo à esquerda */
+  cursor: pointer;
 `;
 
 const Navigation = styled.nav`
-  /* Estilos para os links de navegação ao centro */
+  & > ul {
+    background-color: #fff;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 36px;
+  }
+  & > li {
+    list-style-type: none;
+  }
 `;
-
-const NavigationList = styled.ul`
-  /* Estilos para os links de navegação ao centro */
-`;
-
 
 export default function Navbar() {
-  return (
-    <NavbarStyle as="footer">
-      <Logo>logo</Logo>
-      <Navigation>
-        
-        <NavigationList>
-          <li>
-            <Link to="/">Passo a Passo </Link>
-          </li>
-          <li>
-            <Link to="/login">Seguro Porto Bike</Link>
-          </li>
-          <li>
-            <Link to="/vistoria/1">Equipe</Link>
-          </li>
-        </NavigationList>
+  const isHomePage = useLocation().pathname === '/';
+  const isUserLogged = useLocation().pathname.includes('/vistoria'); //Integrar dados logados
 
-      </Navigation>
-      <Button label="Vistoria" variant="outlined" />
+  const navigate = useNavigate();
+
+  function goToLoginPage() {
+    navigate('/login');
+  }
+
+  function logout() {
+    console.info("Integrar logout")
+    navigate('/login');
+  }
+
+  return (
+    <NavbarStyle as="header">
+      <Logo>
+        <Link to="/">
+          <img
+            src={logoHorizontal}
+            alt="Logo com a escrita Porto em azul e fundo transparente "
+          />
+        </Link>
+      </Logo>
+      {isHomePage && (
+        <Navigation>
+          <ul>
+            <li>
+              <Link to="#passo-a-passo">Passo a Passo </Link>
+            </li>
+            <li>
+              <Link to="#seguro-bike">Seguro Porto Bike</Link>
+            </li>
+            <li>
+              <Link to="#equipe">Equipe</Link>
+            </li>
+          </ul>
+        </Navigation>
+      )}
+      <Button label={isUserLogged ? 'Sair' : 'Vistoria'} variant={isUserLogged ? 'outlinedError' : 'outlined'} onClick={isUserLogged ? logout : goToLoginPage} />
+
     </NavbarStyle>
   );
 }
