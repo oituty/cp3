@@ -5,7 +5,7 @@ import logoHorizontal from '../assets/logo-horizontal.svg';
 
 const NavbarStyle = styled.header`
   display: flex;
-  padding: 13.5px 31.97px 14.5px 34px;
+  padding: 13px 34px 13px 34px;
   justify-content: space-between;
   display: flex;
   align-items: center;
