@@ -9,6 +9,7 @@ const NavbarStyle = styled.header`
   justify-content: space-between;
   display: flex;
   align-items: center;
+  min-height: 40px;
 `;
 
 const Logo = styled.div`
@@ -80,11 +81,13 @@ export default function Navbar() {
           </ul>
         </Navigation>
       )}
-      <Button
-        label={isUserLogged ? 'Sair' : 'Vistoria'}
-        variant={isUserLogged ? 'outlinedError' : 'outlined'}
-        onClick={isUserLogged ? logout : goToLoginPage}
-      />
+      {(isHomePage || isUserLogged) && (
+        <Button
+          label={isUserLogged ? 'Sair' : 'Vistoria'}
+          variant={isUserLogged ? 'outlinedError' : 'outlined'}
+          onClick={isUserLogged ? logout : goToLoginPage}
+        />
+      )}
     </NavbarStyle>
   );
 }
