@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Button from '../components/Button';
 import { useNavigate } from 'react-router-dom';
+import backgroundHeader from '../assets/background-header.png';
 
 const HomeStyle = styled.main`
   display: flex;
@@ -28,7 +29,7 @@ const HeaderSectionStyle = styled.section`
     max-width: 65%;
   }
   & > .header-section-background {
-    background-image: url('./src/assets/background-header.png');
+    background-image: url(${backgroundHeader});
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
