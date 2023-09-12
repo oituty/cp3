@@ -25,6 +25,7 @@
 a {
   text-decoration: inherit;
   color: #444;
+
   &:hover {
     color: #0046C0;
   }
@@ -54,4 +55,24 @@ img {
 .container {
   max-width: 1440px;
   margin: 0 auto;
+}
+
+.inputField {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+
+  & > input {
+    display: inline-flex;
+    height: 12px;
+    padding: 16px 24px;
+    align-items: flex-start;
+    gap: 8px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 2px solid #FFF;
+    background: #FFF;
+    color: #444
+  }
 }
