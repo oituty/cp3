@@ -1,5 +1,8 @@
+/* Importe a fonte Open Sans do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
 :root {
-  font-family: Open Sans;
+  font-family: 'Open Sans', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -14,23 +17,38 @@
   -webkit-text-size-adjust: 100%;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 a {
   text-decoration: inherit;
   color: #444;
   &:hover {
     color: #0046C0;
   }
-
-}
-
-* {
-  margin: 0;
-  padding: 0;
 }
 
 h1 {
   font-size: 2.2em;
   line-height: 1.1;
+}
+
+h2 {
+  font-size: 1.9em;
+  line-height: 1.1;
+}
+
+h3 {
+  font-size: 1.5em;
+  line-height: 1.1;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
 }
 
 .container {

@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 import Button from '../components/Button';
 import { useNavigate } from 'react-router-dom';
+import cyclistBackground from '../assets/cyclist-background.png';
+import step1Background from '../assets/step-1-background.png';
+import step2Background from '../assets/step-2-background.png';
+import step3Background from '../assets/step-3-background.png';
 import backgroundHeader from '../assets/background-header.png';
 
 const HomeStyle = styled.main`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   display: flex;
   align-items: center;
@@ -13,7 +18,7 @@ const HomeStyle = styled.main`
 const HeaderSectionStyle = styled.section`
   color: #0046c0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   width: 100%;
   align-items: center;
   gap: 16px;
@@ -22,7 +27,7 @@ const HeaderSectionStyle = styled.section`
   max-height: 900px;
 
   & > .header-section-box {
-    padding: 13.5px 31.97px 14.5px 34px;
+    padding: 13px 34px 13px 34px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -47,6 +52,62 @@ const HeaderSectionStyle = styled.section`
     }
   }
 `;
+
+const StepByStepStyle = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+  background: #fff;
+  text-align: center;
+  padding: 100px 34px;
+  max-width: 1000px;
+
+  & > .step-by-step-section-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 600px;
+
+    & > h2 {
+      color: #0046c0;
+    }
+  }
+
+  & > .step-by-step-section-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
+    & > .card {
+      height: 400px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 16px;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: max-content max-content;
+      align-content: flex-end;
+
+      & > .title {
+        background-color: #0046c0;
+        color: #fff;
+      }
+      & > .description {
+        padding: 16px;
+        background-color: #fff;
+        border-radius: 0 0 16px 16px;
+      }
+    }
+  }
+`;
+
 
 const HeaderSection = () => {
   const navigate = useNavigate();
@@ -77,10 +138,60 @@ const HeaderSection = () => {
   );
 };
 
+const StepByStepSection = () => {
+  const cards = [
+    {
+      backgroundImage: step1Background,
+      title: 'Cadastro',
+      description:
+        'Cadastre os dados da bicicleta, com informações da marca, mobelo, cores e etc',
+    },
+    {
+      backgroundImage: step2Background,
+      title: 'Fotos',
+      description:
+        'Tire fotos da bicicleta para que nosso sistema de reconhecimento comprove os dados cadastrados',
+    },
+    {
+      backgroundImage: step3Background,
+      title: 'Análise',
+      description:
+        'Os dados serão analisados e salvos no nosso sistema para aprovação',
+    },
+  ];
+  return (
+    <StepByStepStyle as="section">
+      <div className="step-by-step-section-box">
+        <h2>Como fazer sua vistoria online?</h2>
+        <p>
+          Entenda como funciona as etapas do processo de vistoria online da sua bike.
+        </p>
+      </div>
+      <div className="step-by-step-section-cards">
+        {cards.map((card, index) => (
+          <div
+            key={index}
+            className="card"
+            style={{ backgroundImage: `url(${card.backgroundImage})` }}
+          >
+            <h3 className="title">{card.title}</h3>
+            <p className="description">{card.description}</p>
+          </div>
+        ))}
+      </div>
+    </StepByStepStyle>
+  );
+};
+
 export default function Home() {
   return (
     <HomeStyle as="main">
-      <HeaderSection></HeaderSection>
+      <HeaderSection />
+      <StepByStepSection />
+      <img
+        src={cyclistBackground}
+        alt="Imagem de um ciclista andando de bicicleta"
+      />
     </HomeStyle>
   );
 }
