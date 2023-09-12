@@ -2,7 +2,7 @@
 
 Skills: VITE + REACT
 
-Visualizar: https://cp3-ab8fcs9b6-oituty.vercel.app/
+Visualizar: https://cp3-oituty.vercel.app/
 
 INTEGRANTES: 
 RM 99768 - Luiza Nunes de Jesus
