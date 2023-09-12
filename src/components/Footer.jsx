@@ -1,28 +1,35 @@
 import styled from 'styled-components';
-import Button from './Button';
+import logoHorizontalFooter from '../assets/logo-horizontal-footer.svg';
 
 const FooterStyle = styled.footer`
   display: flex;
-  padding: 13.5px 31.97px 14.5px 34px;
-  justify-content: space-between; /* Para distribuir os elementos horizontalmente */
+  flex-wrap: wrap;
+  padding: 30px;
+  justify-content: center;
   align-items: center;
+  gap: 16px;
 `;
 
 const Logo = styled.div`
-  /* Estilos para a logo à esquerda */
-`;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 
-const NavigationLinks = styled.nav`
-  /* Estilos para os links de navegação ao centro */
+  & > img {
+    width: 143px;
+  }
 `;
-
 
 export default function Footer() {
   return (
     <FooterStyle as="footer">
-      <Logo>logo</Logo>
-      <NavigationLinks>links</NavigationLinks>
-      <Button label="Vistoria" variant="outlined"></Button>
+      <Logo>
+          <img
+            src={logoHorizontalFooter}
+            alt="Logo com a escrita Porto Seguro em azul e preto com fundo transparente"
+          />
+      </Logo>
+      <span> © 2023 Todos os direitos reservados</span>
     </FooterStyle>
   );
 }

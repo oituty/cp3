@@ -6,12 +6,17 @@ import logoHorizontal from '../assets/logo-horizontal.svg';
 const NavbarStyle = styled.header`
   display: flex;
   padding: 13.5px 31.97px 14.5px 34px;
-  justify-content: space-between; /* Para distribuir os elementos horizontalmente */
+  justify-content: space-between;
+  display: flex;
   align-items: center;
 `;
 
 const Logo = styled.div`
   cursor: pointer;
+  & > a {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const Navigation = styled.nav`
@@ -26,6 +31,13 @@ const Navigation = styled.nav`
   & > li {
     list-style-type: none;
   }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    & > ul {
+      display: none;
+    }
+  }
 `;
 
 export default function Navbar() {
@@ -39,7 +51,7 @@ export default function Navbar() {
   }
 
   function logout() {
-    console.info("Integrar logout")
+    console.info('Integrar logout');
     navigate('/login');
   }
 
@@ -68,8 +80,11 @@ export default function Navbar() {
           </ul>
         </Navigation>
       )}
-      <Button label={isUserLogged ? 'Sair' : 'Vistoria'} variant={isUserLogged ? 'outlinedError' : 'outlined'} onClick={isUserLogged ? logout : goToLoginPage} />
-
+      <Button
+        label={isUserLogged ? 'Sair' : 'Vistoria'}
+        variant={isUserLogged ? 'outlinedError' : 'outlined'}
+        onClick={isUserLogged ? logout : goToLoginPage}
+      />
     </NavbarStyle>
   );
 }
