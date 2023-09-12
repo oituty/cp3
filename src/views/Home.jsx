@@ -6,12 +6,12 @@ import step1Background from '../assets/step-1-background.png';
 import step2Background from '../assets/step-2-background.png';
 import step3Background from '../assets/step-3-background.png';
 import backgroundHeader from '../assets/background-header.png';
+import backgroundSurvey from '../assets/background-survey.png';
 
 const HomeStyle = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  display: flex;
   align-items: center;
 `;
 
@@ -108,6 +108,23 @@ const StepByStepStyle = styled.section`
   }
 `;
 
+const SurveyStyle = styled.section`
+  width: 100%;
+  background-image: url(${backgroundSurvey});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  & > .survey-box {
+    color: #fff;
+    padding: 100px 34px;
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 300px;
+  }
+`;
 
 const HeaderSection = () => {
   const navigate = useNavigate();
@@ -160,11 +177,12 @@ const StepByStepSection = () => {
     },
   ];
   return (
-    <StepByStepStyle as="section">
+    <StepByStepStyle as="section" id="passo-a-passo">
       <div className="step-by-step-section-box">
         <h2>Como fazer sua vistoria online?</h2>
         <p>
-          Entenda como funciona as etapas do processo de vistoria online da sua bike.
+          Entenda como funciona as etapas do processo de vistoria online da sua
+          bike.
         </p>
       </div>
       <div className="step-by-step-section-cards">
@@ -183,11 +201,24 @@ const StepByStepSection = () => {
   );
 };
 
+const SurveySection = () => {
+  return (
+    <SurveyStyle as="section">
+      <div className="survey-box">
+        <h2>Não tem seguro bike ainda?</h2>
+        <p>Acesse o site Seguro Porto Bike e faça sua cotação online</p>
+        <Button label="Acessar Seguro Porto" variant="elevated" />
+      </div>
+    </SurveyStyle>
+  );
+};
+
 export default function Home() {
   return (
     <HomeStyle as="main">
       <HeaderSection />
       <StepByStepSection />
+      <SurveySection />
       <img
         src={cyclistBackground}
         alt="Imagem de um ciclista andando de bicicleta"

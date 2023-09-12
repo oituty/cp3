@@ -45,15 +45,20 @@ export default function Navbar() {
   const isHomePage = useLocation().pathname === '/';
   const isUserLogged = useLocation().pathname.includes('/vistoria'); //Integrar dados logados
 
+  const routes = [
+    { hash: "#passo-a-passo", label: "Passo a Passo" },
+    { hash: "#seguro-bike", label: "Seguro Porto Bike" },
+    { hash: "#equipe", label: "Equipe" },
+  ];
   const navigate = useNavigate();
 
   function goToLoginPage() {
-    navigate('/login');
+    navigate("/login");
   }
 
   function logout() {
-    console.info('Integrar logout');
-    navigate('/login');
+    console.info("Integrar logout");
+    navigate("/login");
   }
 
   return (
@@ -69,22 +74,18 @@ export default function Navbar() {
       {isHomePage && (
         <Navigation>
           <ul>
-            <li>
-              <Link to="#passo-a-passo">Passo a Passo </Link>
-            </li>
-            <li>
-              <Link to="#seguro-bike">Seguro Porto Bike</Link>
-            </li>
-            <li>
-              <Link to="#equipe">Equipe</Link>
-            </li>
+            {routes.map((route, index) => (
+              <li key={index}>
+                <Link to={route.hash}>{route.label} </Link>
+              </li>
+            ))}
           </ul>
         </Navigation>
       )}
       {(isHomePage || isUserLogged) && (
         <Button
-          label={isUserLogged ? 'Sair' : 'Vistoria'}
-          variant={isUserLogged ? 'outlinedError' : 'outlined'}
+          label={isUserLogged ? "Sair" : "Vistoria"}
+          variant={isUserLogged ? "outlinedError" : "outlined"}
           onClick={isUserLogged ? logout : goToLoginPage}
         />
       )}
