@@ -8,11 +8,12 @@ const ButtonStyle = styled.button`
   line-height: 20px;
   letter-spacing: 0.4px;
   display: flex;
-  padding: 6px 16px 6px 16px;
+  padding: 12px 20px;
   align-items: center;
   justify-content: center;
   border-radius: 4px;
   cursor: pointer;
+  max-width: 400px;
 `;
 
 const ElevatedButton = styled(ButtonStyle)`
