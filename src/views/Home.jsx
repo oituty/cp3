@@ -5,6 +5,7 @@ import cyclistBackground from '../assets/cyclist-background.png';
 import step1Background from '../assets/step-1-background.png';
 import step2Background from '../assets/step-2-background.png';
 import step3Background from '../assets/step-3-background.png';
+import backgroundHeader from '../assets/background-header.png';
 
 const HomeStyle = styled.main`
   display: flex;
@@ -33,7 +34,7 @@ const HeaderSectionStyle = styled.section`
     max-width: 65%;
   }
   & > .header-section-background {
-    background-image: url('./src/assets/background-header.png');
+    background-image: url(${backgroundHeader});
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
@@ -106,16 +107,6 @@ const StepByStepStyle = styled.section`
     }
   }
 `;
-
-const SurveyStyle = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  display: flex;
-  align-items: center;
-`;
-
-
 
 
 const HeaderSection = () => {

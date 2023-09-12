@@ -1,8 +1,12 @@
-# React + Vite
+# CHALLENGE - TERCEIRA ETAPA PORTO SEGURO 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Skills: VITE + REACT
 
-Currently, two official plugins are available:
+Visualizar: https://cp3-oituty.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+INTEGRANTES: 
+RM 99768 - Luiza Nunes de Jesus
+RM 97589 - Tayná Alves Rodrigues
+RM 99903 - Allan Percario
+RM 99892 - Livia Freitas Ferreira
+RM 551873 - Helena Cristina Rocha Medeiros
