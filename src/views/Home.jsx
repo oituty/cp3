@@ -78,6 +78,7 @@ const StepByStepStyle = styled.section`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
+    list-style-type: none;
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
@@ -123,6 +124,54 @@ const SurveyStyle = styled.section`
     flex-direction: column;
     justify-content: flex-start;
     min-height: 300px;
+  }
+`;
+
+const MembersStyle = styled.section`
+  width: 100%;
+  background-color: #fff;
+  & > .members-box {
+    padding: 100px 34px;
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+
+    & > h2 {
+      color: #0046c0;
+    }
+
+    & > button {
+      margin-top: 26px;
+    }
+
+    & > .members-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 26px;
+      width: 100%;
+      list-style-type: none;
+
+      & > .card {
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        text-align: center;
+
+        & > h4 {
+          color: #0046c0;
+          margin-bottom: 10px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   }
 `;
 
@@ -185,18 +234,18 @@ const StepByStepSection = () => {
           bike.
         </p>
       </div>
-      <div className="step-by-step-section-cards">
+      <ul className="step-by-step-section-cards">
         {cards.map((card, index) => (
-          <div
+          <li
             key={index}
             className="card"
             style={{ backgroundImage: `url(${card.backgroundImage})` }}
           >
             <h3 className="title">{card.title}</h3>
             <p className="description">{card.description}</p>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </StepByStepStyle>
   );
 };
@@ -213,12 +262,47 @@ const SurveySection = () => {
   );
 };
 
+const MembersSection = () => {
+  const members = [
+    { name: "Luiza Nunes de Jesus", rm: "RM 99768" },
+    { name: "Tayná Alves Rodrigues", rm: "RM 97589" },
+    { name: "Allan Percario", rm: "RM 99903" },
+    { name: "Livia Freitas Ferreira", rm: "RM 99892" },
+    { name: "Helena C.R. Medeiros", rm: "RM 551873" },
+  ];
+
+  function openRepository() {
+    window.open("https://github.com/oituty/cp3", "_blank");
+  }
+
+  return (
+    <MembersStyle as="section">
+      <div className="members-box">
+        <h2>Integrantes</h2>
+        <p>Equipe de desenvolvimento do projeto</p>
+
+        <ul className="members-cards">
+          {members.map((member, index) => (
+            <li className="card" key={index}>
+              <h4>{member.name}</h4>
+              <p>{member.rm}</p>
+            </li>
+          ))}
+        </ul>
+
+        <Button label="Abrir repositório" variant="outlined" onClick={openRepository} />
+      </div>
+    </MembersStyle>
+  );
+};
+
 export default function Home() {
   return (
     <HomeStyle as="main">
       <HeaderSection />
       <StepByStepSection />
       <SurveySection />
+      <MembersSection />
       <img
         src={cyclistBackground}
         alt="Imagem de um ciclista andando de bicicleta"
