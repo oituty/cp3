@@ -47,7 +47,7 @@ const LoginStyle = styled.main`
   }
 `;
 
-export default function Login() {
+export default function Home() {
   const navigate = useNavigate();
 
   const [inspectionCode, setInspectionCode] = useState('');
